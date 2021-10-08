@@ -6,12 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Event"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
         <TextView
             android:id="@+id/textView_EventName"
             android:layout_width="wrap_content"
@@ -21,10 +24,44 @@
         <EditText
             android:id="@+id/editText_EventName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/editText_EventName"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/buttonAddProducts"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="70dp"
+        android:text="@string/buttonAddProducts_text"/>
+
+    <Button
+        android:id="@+id/buttonAddHandout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/buttonAddHandout_text" />
+    <Button
+        android:id="@+id/buttonAddPersonal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/buttonAddPersonal_text"/>
+
+    <Button
+        android:id="@+id/buttonAddPremises"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/buttonAddPremises_text" />
+    <Button
+        android:id="@+id/buttonAddEquipment"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/buttonAddEquipment_text"/>
+
+    <Button
+        android:id="@+id/buttonCreateEvent"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="@string/buttonCreateEvent_text"/>
 
 </LinearLayout>

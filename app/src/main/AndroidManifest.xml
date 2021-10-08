@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventCalculator">
         <activity
+            android:name=".Products"
+            android:exported="true" />
+        <activity
             android:name=".Event"
             android:exported="true" />
         <activity
