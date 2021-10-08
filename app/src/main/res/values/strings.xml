@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EventCalculator</string>
+    <string name="buttonCreateEvent_text">Создать мероприятие</string>>
+    <string name="buttonEvents_text">Мероприятие</string>
+    <string name="textView_EventName" >Названи мероприятия: </string>
+    <string name="editText_EventName" />
 </resources>
