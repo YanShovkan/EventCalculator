@@ -4,9 +4,9 @@
     <string name="buttonEvents_text">Мероприятие</string>
     <string name="textView_EventName">Названи мероприятия: </string>
     <string name="buttonAddProducts_text">Добавить продукты в меню</string>
-    <string name="buttonAddHandout_text">Добавить раздаточный материал</string>
+    <string name="buttonAddHandouts_text">Добавить раздаточный материал</string>
     <string name="buttonAddPersonal_text">Добавить персонал</string>
     <string name="buttonAddPremises_text">Добавить место</string>
-    <string name="buttonAddEquipment_text">Добавить оборудование</string>
+    <string name="buttonAddEquipments_text">Добавить оборудование</string>
     <string name="buttonCreateEvent_text">Создать мероприятие</string>
 </resources>

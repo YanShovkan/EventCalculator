@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventCalculator">
         <activity
+            android:name=".Equipments"
+            android:exported="true" />
+        <activity
+            android:name=".Premises"
+            android:exported="true" />
+        <activity
+            android:name=".Personal"
+            android:exported="true" />
+        <activity
+            android:name=".Handouts"
+            android:exported="true" />
+        <activity
             android:name=".Products"
             android:exported="true" />
         <activity

@@ -36,10 +36,10 @@
         android:text="@string/buttonAddProducts_text"/>
 
     <Button
-        android:id="@+id/buttonAddHandout"
+        android:id="@+id/buttonAddHandouts"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="@string/buttonAddHandout_text" />
+        android:text="@string/buttonAddHandouts_text" />
     <Button
         android:id="@+id/buttonAddPersonal"
         android:layout_width="match_parent"
@@ -52,10 +52,10 @@
         android:layout_height="70dp"
         android:text="@string/buttonAddPremises_text" />
     <Button
-        android:id="@+id/buttonAddEquipment"
+        android:id="@+id/buttonAddEquipments"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="@string/buttonAddEquipment_text"/>
+        android:text="@string/buttonAddEquipments_text"/>
 
     <Button
         android:id="@+id/buttonCreateEvent"
