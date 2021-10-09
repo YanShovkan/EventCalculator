@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("CREATE TABLE equipment (" +
                 "    equipmentid integer NOT NULL,\n" +
-                "\t  equipment_name character(100),\n" +
+                "\t  equipment_name character(100) NOT NULL,\n" +
                 "\t  equipment_cost integer NOT NULL,\n" +
                 "\t  eventid integer NOT NULL,\n" +
                 "\t  CONSTRAINT equipment_pkey PRIMARY KEY (equipmentid),\n" +
