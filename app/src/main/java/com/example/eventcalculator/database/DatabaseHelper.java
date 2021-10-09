@@ -18,8 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE event (\n" +
                 "    eventid integer PRIMARY KEY,\n" +
                 "    event_name character(100) NOT NULL,\n" +
-                "    date_from date,\n" +
-                "\t  date_to date,\n" +
+                "    date_from string,\n" +
+                "\t  date_to string,\n" +
                 "    description character(150),\n" +
                 "\t  count_of_people integer NOT NULL);\n");
 
@@ -76,6 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "\t  REFERENCES event(eventid) ON DELETE CASCADE\n" +
                 "\t );");
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion,  int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+DATABASE_NAME);
