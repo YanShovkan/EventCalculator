@@ -11,7 +11,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.eventcalculator.R;
-import com.example.eventcalculator.helperClasses.ViewTables;
+import com.example.eventcalculator.database.Models.Product;
 
 public class Products extends AppCompatActivity {
 
@@ -20,6 +20,7 @@ public class Products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
+        fillTable(new String[]{"Название", "Стоимость за штуку", "Кооличество на человека"}, new Product[]{});
     }
 
     void fillTable(String[] titles, Product[] products) {
@@ -44,17 +45,17 @@ public class Products extends AppCompatActivity {
             TableRow tableRow = new TableRow(this);
 
             TextView textViewName = new TextView(this);
-            textViewName.setText(Product.name.toString());
+            textViewName.setText(product.name.toString());
             textViewName.setTextColor(Color.WHITE);
             textViewName.setGravity(Gravity.CENTER);
 
             TextView textViewCost = new TextView(this);
-            textViewCost.setText(Product.cost.toString());
+            textViewCost.setText(product.price);
             textViewCost.setTextColor(Color.WHITE);
             textViewCost.setGravity(Gravity.CENTER);
 
             TextView textViewCount = new TextView(this);
-            textViewCount.setText(Product.count.toString());
+            textViewCount.setText(product.countPerPeople);
             textViewCount.setTextColor(Color.WHITE);
             textViewCount.setGravity(Gravity.CENTER);
 
