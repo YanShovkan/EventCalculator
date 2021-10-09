@@ -18,7 +18,7 @@ public class PremiseStorage implements IPremiseStorage {
     final String COLUMN_ID = "premiseid";
     final String COLUMN_NAME = "premise_name";
     final String COLUMN_COST = "premise_cost";
-    final String COLUMN_ADRESS = "adress_cost";
+    final String COLUMN_ADRESS = "premise_cost";
     final String COLUMN_EVENTID = "eventid";
 
     public PremiseStorage(Context context) {
