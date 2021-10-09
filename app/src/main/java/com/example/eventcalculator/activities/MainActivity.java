@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         ProductStorage productStorage = new ProductStorage(this);
         productStorage.open();
 
-        productStorage.insert(new ProductModel(1, "bara", 1477, 228, 3));
+        //productStorage.delete(new ProductModel(2, "bere", 1488, 228, 3));
         List<ProductModel> p = productStorage.getFullList();
 
         productStorage.close();
