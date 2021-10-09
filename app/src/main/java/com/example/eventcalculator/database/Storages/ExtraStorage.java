@@ -1,6 +1,7 @@
 package com.example.eventcalculator.database.Storages;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
@@ -22,8 +23,8 @@ public class ExtraStorage {
     final String COLUMN_DESCRIPTION = "description";
     final String COLUMN_EVENTID = "eventid";
 
-    public ExtraStorage(View view) {
-        sqlHelper = new DatabaseHelper(view.getContext());
+    public ExtraStorage(Context context) {
+        sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
     }
 

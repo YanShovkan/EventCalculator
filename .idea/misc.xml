@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/TheEmperorPavel-II/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_equipments.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_event.xml" value="0.359375" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_handouts.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_main.xml" value="0.359375" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_personal.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_premises.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_products.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>
   </component>

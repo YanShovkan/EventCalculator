@@ -1,6 +1,7 @@
 package com.example.eventcalculator.database.Storages;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
@@ -20,8 +21,8 @@ public class PremiseStorage {
     final String COLUMN_ADRESS = "adress_cost";
     final String COLUMN_EVENTID = "eventid";
 
-    public PremiseStorage(View view) {
-        sqlHelper = new DatabaseHelper(view.getContext());
+    public PremiseStorage(Context context) {
+        sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
     }
 

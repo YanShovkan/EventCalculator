@@ -1,6 +1,7 @@
 package com.example.eventcalculator.database.Storages;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
@@ -33,8 +34,8 @@ public class EventStorage {
     final String COLUMN_DESCRIPTION = "description";
     final String COLUMN_COUNTOFPEOPLE = "count_of_people";
 
-    public EventStorage(View view) {
-        sqlHelper = new DatabaseHelper(view.getContext());
+    public EventStorage(Context context) {
+        sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
     }

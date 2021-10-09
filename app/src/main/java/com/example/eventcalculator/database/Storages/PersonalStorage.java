@@ -1,6 +1,7 @@
 package com.example.eventcalculator.database.Storages;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
@@ -21,8 +22,8 @@ public class PersonalStorage {
     final String COLUMN_PAYMENT = "personal_payment";
     final String COLUMN_EVENTID = "eventid";
 
-    public PersonalStorage(View view) {
-        sqlHelper = new DatabaseHelper(view.getContext());
+    public PersonalStorage(Context context) {
+        sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
     }
 
