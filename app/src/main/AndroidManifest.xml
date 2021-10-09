@@ -10,25 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EventCalculator">
         <activity
-            android:name=".Equipments"
+            android:name=".activities.Equipments"
             android:exported="true" />
         <activity
-            android:name=".Premises"
+            android:name=".activities.Premises"
             android:exported="true" />
         <activity
-            android:name=".Personal"
+            android:name=".activities.Personal"
             android:exported="true" />
         <activity
-            android:name=".Handouts"
+            android:name=".activities.Handouts"
             android:exported="true" />
         <activity
-            android:name=".Products"
+            android:name=".activities.Products"
             android:exported="true" />
         <activity
-            android:name=".Event"
+            android:name=".activities.Event"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

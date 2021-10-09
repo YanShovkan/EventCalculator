@@ -1,14 +1,16 @@
-package com.example.eventcalculator;
+package com.example.eventcalculator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Products extends AppCompatActivity {
+import com.example.eventcalculator.R;
+
+public class Personal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
+        setContentView(R.layout.activity_personal);
     }
 }
