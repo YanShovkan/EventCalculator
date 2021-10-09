@@ -7,9 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
 
 import com.example.eventcalculator.database.DatabaseHelper;
+import com.example.eventcalculator.database.Models.Premise;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class PremiseStorage {
     DatabaseHelper sqlHelper;
@@ -26,10 +27,19 @@ public class PremiseStorage {
         db = sqlHelper.getWritableDatabase();
     }
 
+    public PremiseStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
     public List<com.example.eventcalculator.database.Models.Premise> GetFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<com.example.eventcalculator.database.Models.Premise> list;
-        list = new Vector<com.example.eventcalculator.database.Models.Premise>();
+        list = new ArrayList<Premise>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -41,7 +51,8 @@ public class PremiseStorage {
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
 
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
@@ -49,7 +60,7 @@ public class PremiseStorage {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
         List<com.example.eventcalculator.database.Models.Premise> list;
-        list = new Vector<com.example.eventcalculator.database.Models.Premise>();
+        list = new ArrayList<com.example.eventcalculator.database.Models.Premise>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -61,7 +72,8 @@ public class PremiseStorage {
             obj.address = cursor.getString((int) cursor.getColumnIndex(COLUMN_ADRESS));
 
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 

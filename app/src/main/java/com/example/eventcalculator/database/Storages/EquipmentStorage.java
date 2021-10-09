@@ -26,10 +26,19 @@ public class EquipmentStorage {
         db = sqlHelper.getWritableDatabase();
     }
 
+    public EquipmentStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
     public List<Equipment> GetFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<Equipment> list;
-        list = new Vector<Equipment>();
+        list = new ArrayList<Equipment>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -39,7 +48,8 @@ public class EquipmentStorage {
             obj.cost = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COST));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
@@ -47,7 +57,7 @@ public class EquipmentStorage {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
         List<Equipment> list;
-        list = new Vector<Equipment>();
+        list = new ArrayList<Equipment>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -57,7 +67,8 @@ public class EquipmentStorage {
             obj.cost = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COST));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 

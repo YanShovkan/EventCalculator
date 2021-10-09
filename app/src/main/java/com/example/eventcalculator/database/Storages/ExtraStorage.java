@@ -10,7 +10,7 @@ import com.example.eventcalculator.database.DatabaseHelper;
 import com.example.eventcalculator.database.Models.Extra;
 
 import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class ExtraStorage {
 
@@ -28,10 +28,19 @@ public class ExtraStorage {
         db = sqlHelper.getWritableDatabase();
     }
 
+    public ExtraStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
     public List<Extra> GetFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<Extra> list;
-        list = new Vector<Extra>();
+        list = new ArrayList<Extra>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -43,7 +52,8 @@ public class ExtraStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
             obj.description=cursor.getString((int) cursor.getColumnIndex(COLUMN_DESCRIPTION));
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
@@ -51,7 +61,7 @@ public class ExtraStorage {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
         List<Extra> list;
-        list = new Vector<Extra>();
+        list = new ArrayList<Extra>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -63,7 +73,8 @@ public class ExtraStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
             obj.description=cursor.getString((int) cursor.getColumnIndex(COLUMN_DESCRIPTION));
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 

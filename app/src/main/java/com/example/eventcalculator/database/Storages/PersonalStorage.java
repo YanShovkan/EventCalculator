@@ -10,7 +10,7 @@ import com.example.eventcalculator.database.DatabaseHelper;
 import com.example.eventcalculator.database.Models.Personal;
 
 import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class PersonalStorage {
     DatabaseHelper sqlHelper;
@@ -27,10 +27,19 @@ public class PersonalStorage {
         db = sqlHelper.getWritableDatabase();
     }
 
+    public PersonalStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
     public List<Personal> GetFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<Personal> list;
-        list = new Vector<Personal>();
+        list = new ArrayList<Personal>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -43,7 +52,8 @@ public class PersonalStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
@@ -51,7 +61,7 @@ public class PersonalStorage {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
         List<Personal> list;
-        list = new Vector<Personal>();
+        list = new ArrayList<Personal>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -64,7 +74,8 @@ public class PersonalStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
