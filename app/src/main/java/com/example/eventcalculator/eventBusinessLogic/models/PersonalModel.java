@@ -1,41 +1,50 @@
 package com.example.eventcalculator.eventBusinessLogic.models;
 
 public class PersonalModel {
-    private String personalName;
-    private double price;
-    private int countPerPeople;
-    private int personalId;
+    public int id;
+    public String position;
+    public String name;
+    public int payment;
+    public int eventId;
 
-    public String getName() {
-        return name;
+    public int getEventId() {
+        return eventId;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public int getCountPerPeople() {
-        return countPerPeople;
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCountPerPeople(int countPerPeople) {
-        this.countPerPeople = countPerPeople;
+    public String getName() {
+        return name;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPayment(int payment) {
+        this.payment = payment;
+    }
+
+    public int getPayment() {
+        return payment;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
 }
