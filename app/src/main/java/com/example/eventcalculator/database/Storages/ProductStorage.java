@@ -40,9 +40,9 @@ public class ProductStorage implements IProductStorage {
     public List<ProductModel> getFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<ProductModel> list = new ArrayList<>();
-        /*if (!cursor.moveToFirst()) {
+        if (!cursor.moveToFirst()) {
             return list;
-        }*/
+        }
         cursor.moveToNext();
         do {
 
@@ -114,8 +114,9 @@ public class ProductStorage implements IProductStorage {
     }
 
     public void delete(ProductModel model) {
-        String where = COLUMN_ID+" = "+model.id;
-        db.delete(TABLE,where,null);
+        String whereClause = COLUMN_ID + " = " + model.getId();
+        String[] whereArgs = new String[] { String.valueOf(model.getId()) };
+        db.delete(TABLE, whereClause, whereArgs);
     }
 
     public ProductModel createModel(Product product) {
