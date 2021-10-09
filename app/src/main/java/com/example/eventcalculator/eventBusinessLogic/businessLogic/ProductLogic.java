@@ -7,13 +7,13 @@ import java.util.List;
 
 public class ProductLogic {
 
-    private final IProductStorage productStorage;
+    private IProductStorage productStorage;
 
     public ProductLogic(IProductStorage productStorage) {
         this.productStorage = productStorage;
     }
 
-    public List<ProductModel> Read(ProductModel model) {
+    public List<ProductModel> read(ProductModel model) {
         if (model == null)
         {
             return productStorage.getFullList();
@@ -27,7 +27,7 @@ public class ProductLogic {
         return productStorage.getFilteredList(model);
     }
 
-    public void CreateOrUpdate(ProductModel model) {
+    public void createOrUpdate(ProductModel model) {
         ProductModel productModel = new ProductModel();
         productModel.setName(model.getName());
         ProductModel element = productStorage.getElement(productModel);
@@ -49,7 +49,7 @@ public class ProductLogic {
         }
     }
 
-    public void Delete(ProductModel model) {
+    public void delete(ProductModel model) {
         ProductModel productModel = new ProductModel();
         productModel.setId(model.getId());
         ProductModel element = productStorage.getElement(productModel);
