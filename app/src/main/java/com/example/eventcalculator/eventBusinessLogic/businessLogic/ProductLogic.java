@@ -18,7 +18,7 @@ public class ProductLogic {
         {
             return productStorage.getFullList();
         }
-        if (model.getProductId() > 0)
+        if (model.getId() > 0)
         {
             List<ProductModel> list = new LinkedList<>();
             list.add(productStorage.getElement(model));
@@ -31,7 +31,7 @@ public class ProductLogic {
         ProductModel productModel = new ProductModel();
         productModel.setName(model.getName());
         ProductModel element = productStorage.getElement(productModel);
-        if (element != null && element.getProductId() != model.getProductId())
+        if (element != null && element.getId() != model.getId())
         {
             try {
                 throw new Exception("Уже есть компонент с таким названием");
@@ -39,7 +39,7 @@ public class ProductLogic {
                 e.printStackTrace();
             }
         }
-        if (model.getProductId() > 0)
+        if (model.getId() > 0)
         {
             productStorage.update(model);
         }
@@ -51,7 +51,7 @@ public class ProductLogic {
 
     public void Delete(ProductModel model) {
         ProductModel productModel = new ProductModel();
-        productModel.setProductId(model.getProductId());
+        productModel.setId(model.getId());
         ProductModel element = productStorage.getElement(productModel);
         if (element == null)
         {
