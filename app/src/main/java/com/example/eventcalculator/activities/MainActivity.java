@@ -9,10 +9,10 @@ import android.widget.Button;
 
 import com.example.eventcalculator.R;
 import com.example.eventcalculator.database.DatabaseHelper;
-import com.example.eventcalculator.database.Storages.PremiseStorage;
+import com.example.eventcalculator.database.Storages.EventStorage;
 import com.example.eventcalculator.database.Storages.ProductStorage;
-import com.example.eventcalculator.eventBusinessLogic.businessLogic.PremiseLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 import java.util.List;
@@ -26,18 +26,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*ProductStorage productStorage = new ProductStorage(this);
+        ProductLogic productLogic = new ProductLogic(productStorage);*/
+
+        /*SQLiteDatabase db = getBaseContext().openOrCreateDatabase("app.db", MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (name TEXT, age INTEGER)");
+        db.execSQL("INSERT OR IGNORE INTO users VALUES ('Tom Smith', 23), ('John Dow', 31)");
+        Cursor query = db.rawQuery("SELECT * FROM users;", null);
+        if(query.moveToFirst()){
+            String name = query.getString(0);
+            int age = query.getInt(1);
+        }*/
+
         ProductStorage productStorage = new ProductStorage(this);
         ProductLogic productLogic = new ProductLogic(productStorage);
+        productStorage.open();
 
-        PremiseStorage premiseStorage = new PremiseStorage(this);
-        PremiseLogic premiseLogic = new PremiseLogic(premiseStorage);
+        //productStorage.delete(new ProductModel(2, "bere", 1488, 228, 3));
+        List<ProductModel> p = productStorage.getFullList();
+        int c = productLogic.countPriceProducts(new EventModel(3));
 
+        productStorage.close();
 
-        productLogic.createOrUpdate(new ProductModel(1, "Гаврила", 123, 2, 1));
-        productLogic.createOrUpdate(new ProductModel(0, "Гаврила", 23, 3, 1));
-        productLogic.createOrUpdate(new ProductModel(0, "Томас", 23, 3, 1));
-        productLogic.delete(new ProductModel(0, "Томас", 23, 3, 1));
-        List<ProductModel> p = productLogic.read(null);
+        //adapter.insert(new User(1, "Bibikin", 23));
+        //User newUser = adapter.getUser(1);
 
         buttonPlanEvent = (Button)findViewById(R.id.buttonPlanEvent);
 
