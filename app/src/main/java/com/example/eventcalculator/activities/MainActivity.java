@@ -6,13 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.eventcalculator.R;
 import com.example.eventcalculator.database.DatabaseHelper;
-import com.example.eventcalculator.database.Models.User;
 import com.example.eventcalculator.database.Storages.ProductStorage;
-import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 import java.util.List;
@@ -38,12 +35,13 @@ public class MainActivity extends AppCompatActivity {
             int age = query.getInt(1);
         }*/
 
-        ProductStorage adapter = new ProductStorage(this);
-        adapter.open();
+        ProductStorage productStorage = new ProductStorage(this);
+        productStorage.open();
 
-        List<User> users = adapter.getUsers();
+        productStorage.insert(new ProductModel(1, "bara", 1477, 228, 3));
+        List<ProductModel> p = productStorage.getFullList();
 
-        adapter.close();
+        productStorage.close();
 
         //adapter.insert(new User(1, "Bibikin", 23));
         //User newUser = adapter.getUser(1);

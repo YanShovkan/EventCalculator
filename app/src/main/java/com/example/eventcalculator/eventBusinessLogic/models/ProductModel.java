@@ -7,6 +7,18 @@ public class ProductModel {
     public int countPerPeople;
     public int eventId;
 
+    public ProductModel(int id, String name, int price, int countPerPeople, int eventId) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.countPerPeople = countPerPeople;
+        this.eventId = eventId;
+    }
+
+    public ProductModel() {
+
+    }
+
     public int getEventId() {
         return eventId;
     }
