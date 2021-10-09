@@ -9,7 +9,10 @@ import android.widget.Button;
 
 import com.example.eventcalculator.R;
 import com.example.eventcalculator.database.DatabaseHelper;
+import com.example.eventcalculator.database.Storages.EventStorage;
 import com.example.eventcalculator.database.Storages.ProductStorage;
+import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 import java.util.List;
@@ -36,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
         ProductStorage productStorage = new ProductStorage(this);
+        ProductLogic productLogic = new ProductLogic(productStorage);
         productStorage.open();
 
         //productStorage.delete(new ProductModel(2, "bere", 1488, 228, 3));
         List<ProductModel> p = productStorage.getFullList();
+        int c = productLogic.countPriceProducts(new EventModel(3));
 
         productStorage.close();
 

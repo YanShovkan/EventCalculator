@@ -1,6 +1,7 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IProductStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 import java.util.LinkedList;
 import java.util.List;
@@ -63,4 +64,16 @@ public class ProductLogic {
         }
         productStorage.delete(model);
     }
+
+    public int countPriceProducts(EventModel model) {
+        List<ProductModel> products = read(null);
+        int price = 0;
+        for(ProductModel product : products) {
+            if(product.getEventId() == model.getId()) {
+                price += product.countPerPeople * model.getCountOfPeople()* product.price;
+            }
+        }
+        return price;
+    }
+
 }
