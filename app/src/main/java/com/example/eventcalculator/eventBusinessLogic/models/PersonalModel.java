@@ -1,10 +1,10 @@
 package com.example.eventcalculator.eventBusinessLogic.models;
 
 public class PersonalModel {
-    private String name;
+    private String personalName;
     private double price;
     private int countPerPeople;
-    private int id;
+    private int personalId;
 
     public String getName() {
         return name;
