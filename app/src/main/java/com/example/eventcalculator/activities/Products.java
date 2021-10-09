@@ -20,7 +20,7 @@ public class Products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-        fillTable(new String[]{"Название", "Стоимость за штуку", "Кооличество на человека"}, new Product[]{});
+        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, new Product[]{});
     }
 
     void fillTable(String[] titles, Product[] products) {
@@ -64,7 +64,6 @@ public class Products extends AppCompatActivity {
             tableRow.addView(textViewCount);
 
             tableRow.setBackgroundColor(Color.parseColor("#FF6200EE"));
-
 
             tableRow.setOnClickListener(new View.OnClickListener() {
                 @Override
