@@ -26,6 +26,7 @@ public class ProductStorage implements IProductStorage {
 
     public ProductStorage(Context context) {
         sqlHelper = new DatabaseHelper(context.getApplicationContext());
+        db = sqlHelper.getWritableDatabase();
     }
 
     public ProductStorage open(){
@@ -40,12 +41,11 @@ public class ProductStorage implements IProductStorage {
     public List<ProductModel> getFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<ProductModel> list = new ArrayList<>();
-        /*if (!cursor.moveToFirst()) {
+        if (!cursor.moveToFirst()) {
             return list;
-        }*/
-        cursor.moveToNext();
+        }
+        //cursor.moveToNext();
         do {
-
             Product obj = new Product();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.price = cursor.getInt((int) cursor.getColumnIndex(COLUMN_PRICE));
@@ -62,7 +62,7 @@ public class ProductStorage implements IProductStorage {
     public List<ProductModel> getFilteredList(ProductModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
-        List<ProductModel> list = new Vector<ProductModel>();
+        List<ProductModel> list = new ArrayList<ProductModel>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -75,7 +75,8 @@ public class ProductStorage implements IProductStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
             list.add(createModel(obj));
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 

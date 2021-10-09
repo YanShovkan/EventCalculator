@@ -19,7 +19,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class EventStorage {
 
@@ -40,10 +40,19 @@ public class EventStorage {
         simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
     }
 
+    public EventStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
     public List<Event> GetFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
         List<Event> list;
-        list = new Vector<Event>();
+        list = new ArrayList<Event>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -62,7 +71,8 @@ public class EventStorage {
             obj.dateFrom = dateFrom;
             obj.dateTo = dateTo;
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
@@ -71,7 +81,7 @@ public class EventStorage {
                 + COLUMN_DATEFROM + " > CURRENT_DATE" +
                 " ORDER BY "+ COLUMN_DATEFROM, null);
         List<Event> list;
-        list = new Vector<Event>();
+        list = new ArrayList<Event>();
         if (!cursor.moveToFirst()) {
             return list;
         }
@@ -90,7 +100,8 @@ public class EventStorage {
             obj.dateFrom = dateFrom;
             obj.dateTo = dateTo;
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isLast());
         return list;
     }
 
