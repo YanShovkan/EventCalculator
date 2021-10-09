@@ -4,15 +4,14 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-
 import com.example.eventcalculator.database.DatabaseHelper;
-import com.example.eventcalculator.database.Models.Premise;
+import com.example.eventcalculator.eventBusinessLogic.interfaces.IPremiseStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.PremiseModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PremiseStorage {
+public class PremiseStorage implements IPremiseStorage {
     DatabaseHelper sqlHelper;
     SQLiteDatabase db;
     final String TABLE = "premise";
@@ -36,15 +35,14 @@ public class PremiseStorage {
         db.close();
     }
 
-    public List<com.example.eventcalculator.database.Models.Premise> GetFullList() {
+    public List<PremiseModel> getFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
-        List<com.example.eventcalculator.database.Models.Premise> list;
-        list = new ArrayList<Premise>();
+        List<PremiseModel> list = new ArrayList<>();
         if (!cursor.moveToFirst()) {
             return list;
         }
         do {
-            com.example.eventcalculator.database.Models.Premise obj = new com.example.eventcalculator.database.Models.Premise();
+            PremiseModel obj = new PremiseModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.cost = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COST));
             obj.address = cursor.getString((int) cursor.getColumnIndex(COLUMN_ADRESS));
@@ -56,16 +54,15 @@ public class PremiseStorage {
         return list;
     }
 
-    public List<com.example.eventcalculator.database.Models.Premise> GetFilteredList(com.example.eventcalculator.database.Models.Premise model) {
+    public List<PremiseModel> getFilteredList(PremiseModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
-        List<com.example.eventcalculator.database.Models.Premise> list;
-        list = new ArrayList<com.example.eventcalculator.database.Models.Premise>();
+        List<PremiseModel> list = new ArrayList<>();
         if (!cursor.moveToFirst()) {
             return list;
         }
         do {
-            com.example.eventcalculator.database.Models.Premise obj = new com.example.eventcalculator.database.Models.Premise();
+            PremiseModel obj = new PremiseModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.cost = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COST));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
@@ -77,10 +74,10 @@ public class PremiseStorage {
         return list;
     }
 
-    public com.example.eventcalculator.database.Models.Premise GetElement(com.example.eventcalculator.database.Models.Premise model) {
+    public PremiseModel getElement(PremiseModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_ID + " = " + model.id, null);
-        com.example.eventcalculator.database.Models.Premise obj = new com.example.eventcalculator.database.Models.Premise();
+        PremiseModel obj = new PremiseModel();
         if (!cursor.moveToFirst()) {
             return null;
         }
@@ -91,7 +88,7 @@ public class PremiseStorage {
         return obj;
     }
 
-    public void Insert(com.example.eventcalculator.database.Models.Premise model) {
+    public void insert(PremiseModel model) {
         ContentValues content = new ContentValues();
         content.put(COLUMN_COST,model.cost);
         content.put(COLUMN_EVENTID,model.eventId);
@@ -99,7 +96,7 @@ public class PremiseStorage {
         db.insert(TABLE,null,content);
     }
 
-    public void Update(com.example.eventcalculator.database.Models.Premise model) {
+    public void update(PremiseModel model) {
         ContentValues content=new ContentValues();
         content.put(COLUMN_COST,model.cost);
         content.put(COLUMN_EVENTID,model.eventId);
@@ -108,7 +105,7 @@ public class PremiseStorage {
         db.update(TABLE,content,where,null);
     }
 
-    public void Delete(com.example.eventcalculator.database.Models.Premise model) {
+    public void delete(PremiseModel model) {
         String where = COLUMN_ID+" = "+model.id;
         db.delete(TABLE,where,null);
     }
