@@ -1,14 +1,16 @@
-package com.example.eventcalculator;
+package com.example.eventcalculator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Handouts extends AppCompatActivity {
+import com.example.eventcalculator.R;
+
+public class Premises extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_handouts);
+        setContentView(R.layout.activity_premises);
     }
 }
