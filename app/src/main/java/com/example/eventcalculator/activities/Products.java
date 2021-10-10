@@ -22,7 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Products extends AppCompatActivity {
-
+    ProductLogic productLogic;
     TableRow selectedRow;
 
     @Override
@@ -32,10 +32,10 @@ public class Products extends AppCompatActivity {
         selectedRow = new TableRow(this);
         Bundle arguments = getIntent().getExtras();
         ProductStorage productStorage = new ProductStorage(this);
-        ProductLogic productLogic = new ProductLogic(productStorage);
+        productLogic = new ProductLogic(productStorage);
         int data = getIntent().getExtras().getInt("eventId");
 
-        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, productLogic.read(null));
+        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, getProducts(data));
     }
 
     void fillTable(String[] titles, List<ProductModel> products) {
@@ -114,11 +114,15 @@ public class Products extends AppCompatActivity {
         }
     }
 
-    List<ProductModel> getProducts(){
+    List<ProductModel> getProducts(int eventId){
         List<ProductModel> products = new LinkedList<ProductModel>();
 
-        for(int i = 0; i < 10; i++){
-            products.add(new ProductModel("name" + i,i*10,i*2,1));
+        List<ProductModel> allProducts = productLogic.read(null);
+
+        for(ProductModel product : allProducts){
+            if(product.eventId == eventId){
+                products.add(product);
+            }
         }
 
         return  products;
