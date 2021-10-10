@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         EquipmentLogic equipmentLogic = new EquipmentLogic(equipmentStorage);
 
         EventStorage eventStorage = new EventStorage(this);
-        EventLogic eventLogic = new EventLogic(eventStorage);
+        EventLogic eventLogic = new EventLogic(this, eventStorage);
 
         PersonalStorage personalStorage = new PersonalStorage(this);
         PersonalLogic personalLogic = new PersonalLogic(personalStorage);
