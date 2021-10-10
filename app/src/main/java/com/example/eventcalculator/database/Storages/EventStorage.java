@@ -62,6 +62,8 @@ public class EventStorage implements IEventStorage {
             obj.dateFrom = dateFrom;
             obj.dateTo = dateTo;
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
+            obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
+            list.add(obj);
             cursor.moveToNext();
         } while (!cursor.isAfterLast());
         return list;

@@ -7,8 +7,7 @@ public class ProductModel {
     public int countPerPeople;
     public int eventId;
 
-    public ProductModel(int id, String name, int price, int countPerPeople, int eventId) {
-        this.id = id;
+    public ProductModel(String name, int price, int countPerPeople, int eventId) {
         this.name = name;
         this.price = price;
         this.countPerPeople = countPerPeople;
