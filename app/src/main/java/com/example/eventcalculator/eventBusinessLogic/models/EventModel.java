@@ -5,14 +5,13 @@ import java.util.Date;
 public class EventModel {
     public int id;
     public String name;
-    public Date dateFrom;
-    public Date dateTo;
+
+    public int dayCount;
     public int countOfPeople;
 
-    public EventModel(String name, Date dateFrom, Date dateTo, int countOfPeople) {
+    public EventModel(String name, int dayCount, int countOfPeople) {
         this.name = name;
-        this.dateFrom = dateFrom;
-        this.dateTo = dateTo;
+        this.dayCount = dayCount;
         this.countOfPeople = countOfPeople;
     }
 
@@ -34,14 +33,6 @@ public class EventModel {
         return id;
     }
 
-    public Date getDateFrom() {
-        return dateFrom;
-    }
-
-    public Date getDateTo() {
-        return dateTo;
-    }
-
     public int getCountOfPeople() {
         return countOfPeople;
     }
@@ -50,12 +41,12 @@ public class EventModel {
         this.countOfPeople = countOfPeople;
     }
 
-    public void setDateFrom(Date dateFrom) {
-        this.dateFrom = dateFrom;
+    public int getDayCount() {
+        return dayCount;
     }
 
-    public void setDateTo(Date dateTo) {
-        this.dateTo = dateTo;
+    public void setDayCount(int dayCount) {
+        this.dayCount = dayCount;
     }
 
 }

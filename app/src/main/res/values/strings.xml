@@ -9,7 +9,9 @@
     <string name="buttonAddPremises_text">Добавить место</string>
     <string name="buttonAddEquipments_text">Добавить оборудование</string>
     <string name="buttonCreateEvent_text">Создать мероприятие</string>
-    <string name="buttonAdd_text" >Добавить</string>
-    <string name="buttonDelete_text" >Удалить</string>
-    <string name="buttonChange_text" >Изменить</string>
+    <string name="buttonAdd_text">Добавить</string>
+    <string name="buttonDelete_text">Удалить</string>
+    <string name="buttonChange_text">Изменить</string>
+    <string name="textView_PersonCount" >Количество человек: </string>
+    <string name="textView_DaysCount" >Количество дней: </string>
 </resources>
