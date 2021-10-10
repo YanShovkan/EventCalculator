@@ -66,7 +66,7 @@ public class Products extends AppCompatActivity {
             tableRow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    tableRow.setBackgroundColor(Color.GREEN);
                 }
             });
 
