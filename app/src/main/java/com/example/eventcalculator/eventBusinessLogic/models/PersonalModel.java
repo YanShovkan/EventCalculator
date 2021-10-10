@@ -7,6 +7,22 @@ public class PersonalModel {
     public int payment;
     public int eventId;
 
+    public PersonalModel(int id, String position, String name, int payment) {
+        this.id = id;
+        this.position = position;
+        this.name = name;
+        this.payment = payment;
+    }
+
+    public PersonalModel(String position, String name, int payment) {
+        this.position = position;
+        this.name = name;
+        this.payment = payment;
+    }
+
+    public PersonalModel() {
+    }
+
     public int getEventId() {
         return eventId;
     }

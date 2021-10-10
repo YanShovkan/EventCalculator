@@ -24,6 +24,7 @@ import com.example.eventcalculator.eventBusinessLogic.businessLogic.PersonalLogi
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.PremiseLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
 import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
+import com.example.eventcalculator.eventBusinessLogic.models.PersonalModel;
 import com.example.eventcalculator.eventBusinessLogic.models.PremiseModel;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         PersonalStorage personalStorage = new PersonalStorage(this);
         PersonalLogic personalLogic = new PersonalLogic(personalStorage);
+
+        List<PersonalModel> list = personalLogic.Read(null);
 
         ExtraStorage extraStorage = new ExtraStorage(this);
         ExtraLogic extraLogic = new ExtraLogic(extraStorage);

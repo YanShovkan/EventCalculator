@@ -38,11 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "\t  personal_name character(100) NOT NULL,\n" +
                 "\t  personal_position character(100) NOT NULL,\n" +
                 "\t  payment integer NOT NULL,\n" +
-                "\t  eventid integer NOT NULL,\n" +
-                "\t  CONSTRAINT personal_pkey PRIMARY KEY (personalid),\n" +
-                "\t  CONSTRAINT eventfk FOREIGN KEY (eventid)\n" +
-                "\t  REFERENCES event(eventid) ON DELETE CASCADE\n" +
-                "\t);\n");
+                "\t  eventid integer NOT NULL);\n");
 
         db.execSQL("CREATE TABLE premise (" +
                 "    premiseid integer NOT NULL,\n" +

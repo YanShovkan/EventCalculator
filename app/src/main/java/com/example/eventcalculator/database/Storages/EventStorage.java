@@ -17,7 +17,6 @@ public class EventStorage implements IEventStorage {
 
     DatabaseHelper sqlHelper;
     SQLiteDatabase db;
-    final SimpleDateFormat simpleDateFormat;
     final String TABLE = "event";
     final String COLUMN_ID = "eventid";
     final String COLUMN_NAME = "event_name";
@@ -28,7 +27,6 @@ public class EventStorage implements IEventStorage {
     public EventStorage(Context context) {
         sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
-        simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
     }
 
     public EventStorage open(){
@@ -49,7 +47,7 @@ public class EventStorage implements IEventStorage {
         do {
             EventModel obj = new EventModel();
 
-            //obj.dayCount = cursor.getInt((int) cursor.getColumnIndex(COLUMN_DAYCOUNT));
+            obj.dayCount = cursor.getInt((int) cursor.getColumnIndex(COLUMN_DAYCOUNT));
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             list.add(obj);

@@ -68,15 +68,14 @@ public class Event extends AppCompatActivity {
         EventStorage eventStorage = new EventStorage(this);
         EventLogic eventLogic = new EventLogic(this, eventStorage);
 
+        eventLogic.createOrUpdate(new EventModel("null", 0, 0));
         List<EventModel> eventList = eventLogic.read(null);
         buttonAddProducts = (Button)findViewById(R.id.buttonAddProducts);
         editText_EventName = findViewById(R.id.editText_EventName);
         editText_PersonCount = findViewById(R.id.editText_PersonCount);
         editText_DaysCount = findViewById(R.id.editText_DaysCount);
 
-
         eventId = 1;
-
         if(!eventList.isEmpty()) {
             eventId = eventList.get(eventList.size() - 1).id + 1;
         }
@@ -95,7 +94,6 @@ public class Event extends AppCompatActivity {
         );
 
         buttonAddHandouts = (Button)findViewById(R.id.buttonAddHandouts);
-
         buttonAddHandouts.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

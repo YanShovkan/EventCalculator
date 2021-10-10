@@ -45,7 +45,7 @@ public class Personal extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Personal.this, OnePersonal.class);
+                Intent intent = new Intent(Personal.this, AddPersonal.class);
                 intent.putExtra("eventId", eventId);
                 startActivity(intent);
             }
