@@ -51,7 +51,7 @@ public class ProductStorage implements IProductStorage {
 
             list.add(obj);
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 
@@ -72,7 +72,7 @@ public class ProductStorage implements IProductStorage {
 
             list.add(obj);
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 

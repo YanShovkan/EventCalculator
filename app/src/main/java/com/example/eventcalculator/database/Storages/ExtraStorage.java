@@ -50,7 +50,7 @@ public class ExtraStorage implements IExtraStorage {
             obj.description=cursor.getString((int) cursor.getColumnIndex(COLUMN_DESCRIPTION));
             list.add(obj);
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 
@@ -70,7 +70,7 @@ public class ExtraStorage implements IExtraStorage {
             obj.description=cursor.getString((int) cursor.getColumnIndex(COLUMN_DESCRIPTION));
             list.add(obj);
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 

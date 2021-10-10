@@ -9,13 +9,14 @@ public class EventModel {
     public Date dateTo;
     public int countOfPeople;
 
-    public EventModel(int id) {
-        this.id = id;
+    public EventModel(String name, Date dateFrom, Date dateTo, int countOfPeople) {
+        this.name = name;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.countOfPeople = countOfPeople;
     }
 
-    public EventModel() {
-
-    }
+    public EventModel() {}
 
     public void setName(String name) {
         this.name = name;

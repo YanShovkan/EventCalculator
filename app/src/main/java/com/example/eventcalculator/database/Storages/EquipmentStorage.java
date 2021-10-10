@@ -46,7 +46,7 @@ public class EquipmentStorage implements IEquipmentStorage {
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 
@@ -64,7 +64,7 @@ public class EquipmentStorage implements IEquipmentStorage {
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.eventcalculator.database.DatabaseHelper;
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IPremiseStorage;
 import com.example.eventcalculator.eventBusinessLogic.models.PremiseModel;
+import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +17,9 @@ public class PremiseStorage implements IPremiseStorage {
     SQLiteDatabase db;
     final String TABLE = "premise";
     final String COLUMN_ID = "premiseid";
-    final String COLUMN_NAME = "premise_name";
+    final String COLUMN_NAME = "pramise_name";
     final String COLUMN_COST = "premise_cost";
-    final String COLUMN_ADRESS = "premise_cost";
+    final String COLUMN_ADRESS = "premise_adress";
     final String COLUMN_EVENTID = "eventid";
 
     public PremiseStorage(Context context) {
@@ -50,7 +51,7 @@ public class PremiseStorage implements IPremiseStorage {
 
             list.add(obj);
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 
@@ -70,7 +71,7 @@ public class PremiseStorage implements IPremiseStorage {
 
             list.add(obj);
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 

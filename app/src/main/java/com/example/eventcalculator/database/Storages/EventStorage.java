@@ -63,7 +63,7 @@ public class EventStorage implements IEventStorage {
             obj.dateTo = dateTo;
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 
@@ -91,7 +91,7 @@ public class EventStorage implements IEventStorage {
             obj.dateTo = dateTo;
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
             cursor.moveToNext();
-        } while (!cursor.isLast());
+        } while (!cursor.isAfterLast());
         return list;
     }
 
