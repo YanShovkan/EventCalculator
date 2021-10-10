@@ -6,8 +6,7 @@ public class PremiseModel {
     public int cost;
     public int eventId;
 
-    public PremiseModel(int id, String address, int cost, int eventId) {
-        this.id = id;
+    public PremiseModel(String address, int cost, int eventId) {
         this.address = address;
         this.cost = cost;
         this.eventId = eventId;

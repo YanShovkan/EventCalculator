@@ -75,6 +75,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "\t  CONSTRAINT eventfk FOREIGN KEY (eventid)\n" +
                 "\t  REFERENCES event(eventid) ON DELETE CASCADE\n" +
                 "\t );");
+
+        db.execSQL("CREATE TABLE handout (\n" +
+                "    handoutid integer NOT NULL,\n" +
+                "    handout_name character(100) NOT NULL,\n" +
+                "    handout_cost integer NOT NULL,\n" +
+                "\t  count_per_person real NOT NULL,\n" +
+                "\t  eventid integer NOT NULL,\n" +
+                "\t  CONSTRAINT handout_pkey PRIMARY KEY (handoutid),\n" +
+                "\t  CONSTRAINT eventfk FOREIGN KEY (eventid) \n" +
+                "\t  REFERENCES event(eventid) ON DELETE CASCADE\n" +
+                ");");
     }
 
     @Override

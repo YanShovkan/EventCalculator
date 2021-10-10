@@ -9,6 +9,7 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp">
 
+
     <ScrollView
         android:id="@+id/scrollViewPersonal"
         android:layout_marginTop="20dp"
@@ -63,6 +64,60 @@
         android:layout_height="60dp"
         android:text="@string/buttonChange_text"
         android:onClick="buttonUpdate_click" />
+
+
+
+    <ScrollView
+        android:id="@+id/scrollViewPersonal"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="360dp"
+        android:background="#3d455b"
+        android:layout_alignParentLeft="true" >
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollViewPersonal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutPersonal"
+                android:layout_width="fill_parent"
+                android:layout_gravity="center"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:id="@+id/tableLayoutPersonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true" >
+                </TableLayout>
+            </RelativeLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/buttonAdd_text"/>
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/buttonDelete_text" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/buttonChange_text" />
 
 
 </LinearLayout>
