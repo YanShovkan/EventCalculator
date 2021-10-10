@@ -6,8 +6,7 @@ public class EquipmentModel {
     public int cost;
     public int eventId;
 
-    public EquipmentModel(int id, String name, int cost, int eventId) {
-        this.id = id;
+    public EquipmentModel(String name, int cost, int eventId) {
         this.name = name;
         this.cost = cost;
         this.eventId = eventId;
