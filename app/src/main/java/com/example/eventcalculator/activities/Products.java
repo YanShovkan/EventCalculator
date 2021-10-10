@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.eventcalculator.R;
 
+import com.example.eventcalculator.database.Storages.ProductStorage;
+import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 import java.util.Arrays;
@@ -28,12 +30,15 @@ public class Products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
         selectedRow = new TableRow(this);
+        Bundle arguments = getIntent().getExtras();
+        ProductStorage productStorage = new ProductStorage(this);
+        ProductLogic productLogic = new ProductLogic(productStorage);
+        int data = getIntent().getExtras().getInt("eventId");
 
-        fillTable(Arrays.asList("Название", "Стоимость за штуку", "Количество на человека"), getProducts());
-
+        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, productLogic.read(null));
     }
 
-    void fillTable(List<String> titles, List<ProductModel> products) {
+    void fillTable(String[] titles, List<ProductModel> products) {
 
         TableLayout tableLayoutProducts = findViewById(R.id.tableLayoutProducts);
 
