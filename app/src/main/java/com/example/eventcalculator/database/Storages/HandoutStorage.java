@@ -6,13 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.eventcalculator.database.DatabaseHelper;
+import com.example.eventcalculator.eventBusinessLogic.interfaces.IHandoutStorage;
 import com.example.eventcalculator.eventBusinessLogic.models.HandoutModel;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HandoutStorage {
+public class HandoutStorage implements IHandoutStorage {
     DatabaseHelper sqlHelper;
     SQLiteDatabase db;
     final String TABLE = "handout";

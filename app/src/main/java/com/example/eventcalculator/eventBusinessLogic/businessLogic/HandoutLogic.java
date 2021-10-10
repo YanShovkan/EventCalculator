@@ -1,5 +1,6 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
+import com.example.eventcalculator.database.Storages.HandoutStorage;
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IHandoutStorage;
 import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 import com.example.eventcalculator.eventBusinessLogic.models.HandoutModel;

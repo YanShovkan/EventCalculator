@@ -19,6 +19,7 @@ import java.util.List;
 
 public class EventLogic {
     private IEventStorage eventStorage;
+
     private Context context;
     ProductStorage productStorage;
     ProductLogic productLogic;
