@@ -28,7 +28,7 @@ public class Event extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
         EventStorage eventStorage = new EventStorage(this);
-        EventLogic eventLogic = new EventLogic(eventStorage);
+        EventLogic eventLogic = new EventLogic(this, eventStorage);
         List<EventModel> eventList = eventLogic.read(null);
         buttonAddProducts = (Button)findViewById(R.id.buttonAddProducts);
 
