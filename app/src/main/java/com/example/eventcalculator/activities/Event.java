@@ -151,7 +151,7 @@ public class Event extends AppCompatActivity {
                     public void onClick(View v) {
                         eventLogic.createOrUpdate(new EventModel(editText_EventName.getText().toString(), Integer.parseInt(editText_DaysCount.getText().toString()),Integer.parseInt(editText_PersonCount.getText().toString()) ));
 
-                        int totalCost;
+                        int totalCost = 0;
 
                         PremiseModel premiseModel = new PremiseModel();
                         premiseModel.setEventId(eventId);
@@ -178,9 +178,28 @@ public class Event extends AppCompatActivity {
                         List<EquipmentModel> equipments = equipmentLogic.Read(equipmentModel);
 
 
+                        for(PremiseModel premise : premises){
+                            totalCost += premise.getCost() * Integer.parseInt(editText_DaysCount.getText().toString());
+                        }
+
+                        for(PersonalModel onePersonal : personal){
+                            totalCost += onePersonal.getPayment() * Integer.parseInt(editText_DaysCount.getText().toString());
+                        }
+
+                        for(HandoutModel handout : handouts){
+                            totalCost += handout.getPrice();
+                        }
+
+                        for(ProductModel product : products){
+                            totalCost += product.getPrice() * Integer.parseInt(editText_DaysCount.getText().toString());
+                        }
+
+                        for(EquipmentModel equipment : equipments){
+                            totalCost += equipment.getCost() * Integer.parseInt(editText_DaysCount.getText().toString());
+                        }
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(Event.this);
-                        builder.setMessage("Итоговая стоимость вашего мероприятия: ");
+                        builder.setMessage("Итоговая стоимость вашего мероприятия: " + totalCost);
                         builder.setCancelable(true);
 
                         builder.setPositiveButton(
