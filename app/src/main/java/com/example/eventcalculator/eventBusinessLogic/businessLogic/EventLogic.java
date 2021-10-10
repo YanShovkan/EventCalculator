@@ -1,12 +1,14 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
+import android.app.Application;
+
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IEventStorage;
 import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class EventLogic {
+public class EventLogic extends Application {
     private IEventStorage eventStorage;
 
     public EventLogic(IEventStorage eventStorage) {
