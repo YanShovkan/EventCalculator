@@ -9,7 +9,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.example.eventcalculator.R;
+import com.example.eventcalculator.database.Storages.ProductStorage;
+import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
 import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
+
+import java.util.List;
 
 public class Products extends AppCompatActivity {
 
@@ -17,11 +21,15 @@ public class Products extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
+        Bundle arguments = getIntent().getExtras();
+        ProductStorage productStorage = new ProductStorage(this);
+        ProductLogic productLogic = new ProductLogic(productStorage);
+        int data = getIntent().getExtras().getInt("eventId");
 
-        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, new ProductModel[]{});
+        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, productLogic.read(null));
     }
 
-    void fillTable(String[] titles, ProductModel[] products) {
+    void fillTable(String[] titles, List<ProductModel> products) {
         TableLayout tableLayoutProducts = findViewById(R.id.tableLayoutProducts);
 
         TableRow tableRowTitles = new TableRow(this);
@@ -43,17 +51,17 @@ public class Products extends AppCompatActivity {
             TableRow tableRow = new TableRow(this);
 
             TextView textViewName = new TextView(this);
-            textViewName.setText(product.name.toString());
+            textViewName.setText(product.name);
             textViewName.setTextColor(Color.WHITE);
             textViewName.setGravity(Gravity.CENTER);
 
             TextView textViewCost = new TextView(this);
-            textViewCost.setText(product.price);
+            textViewCost.setText(Integer.toString(product.price));
             textViewCost.setTextColor(Color.WHITE);
             textViewCost.setGravity(Gravity.CENTER);
 
             TextView textViewCount = new TextView(this);
-            textViewCount.setText(product.countPerPeople);
+            textViewCount.setText(Integer.toString(product.countPerPeople));
             textViewCount.setTextColor(Color.WHITE);
             textViewCount.setGravity(Gravity.CENTER);
 
@@ -65,9 +73,7 @@ public class Products extends AppCompatActivity {
 
             tableRow.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    tableRow.setBackgroundColor(Color.GREEN);
-                }
+                public void onClick(View v) { }
             });
 
             tableLayoutProducts.addView(tableRow);
