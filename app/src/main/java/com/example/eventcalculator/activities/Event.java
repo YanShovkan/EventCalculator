@@ -113,6 +113,7 @@ public class Event extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Event.this, Personal.class);
+                        intent.putExtra("eventId", evendIdToPut);
                         startActivity(intent);
                     }
                 }

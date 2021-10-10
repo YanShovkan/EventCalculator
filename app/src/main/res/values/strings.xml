@@ -14,4 +14,6 @@
     <string name="buttonChange_text">Изменить</string>
     <string name="textView_PersonCount" >Количество человек: </string>
     <string name="textView_DaysCount" >Количество дней: </string>
+    <string name="textView_Save" >Сохранить </string>
+    <string name="textView_Cancel" >Отменить </string>
 </resources>

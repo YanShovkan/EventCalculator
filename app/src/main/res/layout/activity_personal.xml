@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.Personal"
-    android:orientation="vertical"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp">
+    android:orientation="vertical">
 
 
     <ScrollView
@@ -42,28 +40,25 @@
 
 
     <Button
-        android:id="@+id/buttonAdd"
+        android:id="@+id/buttonAddPersonal"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/buttonAdd_text"
-        android:onClick="buttonAdd_click"/>
+        android:text="@string/buttonAdd_text"/>
 
     <Button
-        android:id="@+id/buttonDelete"
+        android:id="@+id/buttonDeletePersonal"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/buttonDelete_text"
-        android:onClick="buttonDelete_click" />
+        android:text="@string/buttonDelete_text" />
 
     <Button
-        android:id="@+id/buttonUpdate"
+        android:id="@+id/buttonUpdatePersonal"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="@string/buttonChange_text"
-        android:onClick="buttonUpdate_click" />
+        android:text="@string/buttonChange_text"/>
 
 
 
