@@ -74,7 +74,7 @@ public class ProductLogic extends Application {
         int price = 0;
         for(ProductModel product : products) {
             if(product.getEventId() == model.getId()) {
-                price += product.countPerPeople * model.getCountOfPeople()* product.price;
+                price += product.countPerPeople * model.getCountOfPeople() * product.price;
             }
         }
         return price;

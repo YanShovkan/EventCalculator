@@ -1,7 +1,11 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IPersonalStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 import com.example.eventcalculator.eventBusinessLogic.models.PersonalModel;
+import com.example.eventcalculator.eventBusinessLogic.models.PremiseModel;
+import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -62,5 +66,16 @@ public class PersonalLogic {
             }
         }
         personalStorage.delete(model);
+    }
+
+    public int countPricePersonal(EventModel model) {
+        List<PersonalModel> persons = Read(null);
+        int price = 0;
+        for(PersonalModel person : persons) {
+            if(person.getEventId() == model.getId()) {
+                price += person.payment;
+            }
+        }
+        return price;
     }
 }

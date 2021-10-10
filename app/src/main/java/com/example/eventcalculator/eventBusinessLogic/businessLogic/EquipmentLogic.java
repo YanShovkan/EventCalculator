@@ -2,6 +2,8 @@ package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IEquipmentStorage;
 import com.example.eventcalculator.eventBusinessLogic.models.EquipmentModel;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
+import com.example.eventcalculator.eventBusinessLogic.models.PersonalModel;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -63,4 +65,16 @@ public class EquipmentLogic {
         }
         equipmentStorage.delete(model);
     }
+
+    public int countPricePersonal(EventModel model) {
+        List<EquipmentModel> equipments = Read(null);
+        int price = 0;
+        for(EquipmentModel equipment : equipments) {
+            if(equipment.getEventId() == model.getId()) {
+                price += equipment.cost;
+            }
+        }
+        return price;
+    }
+
 }
