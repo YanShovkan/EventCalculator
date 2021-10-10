@@ -1,7 +1,6 @@
 package com.example.eventcalculator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -11,7 +10,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.eventcalculator.R;
-import com.example.eventcalculator.database.Models.Product;
+
+import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 
 public class Products extends AppCompatActivity {
 
@@ -20,10 +20,11 @@ public class Products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, new Product[]{});
+        fillTable(new String[]{"Название", "Стоимость за штуку", "Количество на человека"}, new ProductModel[]{});
+
     }
 
-    void fillTable(String[] titles, Product[] products) {
+    void fillTable(String[] titles, ProductModel[] products) {
         TableLayout tableLayoutProducts = findViewById(R.id.tableLayoutProducts);
 
         TableRow tableRowTitles = new TableRow(this);
@@ -41,7 +42,7 @@ public class Products extends AppCompatActivity {
         tableRowTitles.setBackgroundColor(Color.parseColor("#FF6200EE"));
         tableLayoutProducts.addView(tableRowTitles);
 
-        for (Product product : products) {
+        for (ProductModel product : products) {
             TableRow tableRow = new TableRow(this);
 
             TextView textViewName = new TextView(this);
@@ -68,7 +69,7 @@ public class Products extends AppCompatActivity {
             tableRow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    tableRow.setBackgroundColor(Color.GREEN);
                 }
             });
 
