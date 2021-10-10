@@ -23,13 +23,15 @@ import java.util.List;
 
 public class Personal extends AppCompatActivity {
     TableRow selectedRow;
-    PersonalStorage personalStorage = new PersonalStorage(this);
-    PersonalLogic personalLogic=new PersonalLogic(personalStorage);
+    PersonalStorage personalStorage;
+    PersonalLogic personalLogic;
     int eventId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        personalStorage = new PersonalStorage(this);
+        personalLogic=new PersonalLogic(personalStorage);
         setContentView(R.layout.activity_personal);
         selectedRow = new TableRow(this);
         eventId = getIntent().getExtras().getInt("eventId");
@@ -153,6 +155,5 @@ public class Personal extends AppCompatActivity {
         List<PersonalModel> personal = personalLogic.Read(personalModel);
         return  personal;
     }
-
 
 }
