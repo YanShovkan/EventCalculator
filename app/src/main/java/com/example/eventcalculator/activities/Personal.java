@@ -2,10 +2,12 @@ package com.example.eventcalculator.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -31,7 +33,41 @@ public class Personal extends AppCompatActivity {
         setContentView(R.layout.activity_personal);
         selectedRow = new TableRow(this);
         eventId = getIntent().getExtras().getInt("eventId");
+
         fillTable(Arrays.asList("Должность", "Имя", "Оплата"), getPersonal());
+
+        Button buttonAdd = findViewById(R.id.buttonAddPersonal);
+        Button buttonUpdate = findViewById(R.id.buttonUpdatePersonal);
+        Button buttonDelete = findViewById(R.id.buttonDeletePersonal);
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Personal.this, OnePersonal.class);
+                intent.putExtra("eventId", eventId);
+                startActivity(intent);
+            }
+        });
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Personal.this, OnePersonal.class);
+                intent.putExtra("eventId", eventId);
+                intent.putExtra("OnePersonalId",Integer.parseInt(String.valueOf(selectedRow.getChildAt(3))));
+                startActivity(intent);
+            }
+        });
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PersonalModel personal = new PersonalModel();
+                personal.setId(Integer.parseInt(String.valueOf(selectedRow.getChildAt(3))));
+                personalLogic.Delete(personal);
+
+            }
+        });
     }
 
     void fillTable(List<String> titles, List<PersonalModel> personal) {
@@ -86,6 +122,7 @@ public class Personal extends AppCompatActivity {
             tableRow.addView(textViewName);
             tableRow.addView(textViewCost);
             tableRow.addView(textViewCount);
+            tableRow.addView(textViewId);
 
             tableRow.setBackgroundColor(Color.parseColor("#FF6200EE"));
 
@@ -117,15 +154,5 @@ public class Personal extends AppCompatActivity {
         return  personal;
     }
 
-    public void buttonAdd_click(View view) {
 
-    }
-
-    public void buttonDelete_click(View view) {
-
-    }
-
-    public void buttonUpdate_click(View view) {
-
-    }
 }
