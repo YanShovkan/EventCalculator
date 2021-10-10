@@ -20,6 +20,8 @@ public class Event extends AppCompatActivity {
     private Button buttonAddPersonal;
     private Button buttonAddPremises;
     private Button buttonAddEquipments;
+    private Button buttonCreateEvent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +32,22 @@ public class Event extends AppCompatActivity {
         List<EventModel> eventList = eventLogic.read(null);
         buttonAddProducts = (Button)findViewById(R.id.buttonAddProducts);
 
-        int data = eventList.get(eventList.size() - 1).id + 1;
+
+
+        int eventId = 1;
+
+        if(!eventList.isEmpty()) {
+            eventId = eventList.get(eventList.size() - 1).id + 1;
+        }
+
+        int evendIdToPut = eventId;
 
         buttonAddProducts.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Event.this, Products.class);
-                        intent.putExtra("eventId", data);
+                        intent.putExtra("eventId", evendIdToPut);
                         startActivity(intent);
                     }
                 }
@@ -87,6 +97,17 @@ public class Event extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(Event.this, Equipments.class);
                         startActivity(intent);
+                    }
+                }
+        );
+
+        buttonCreateEvent = (Button)findViewById(R.id.buttonCreateEvent);
+
+        buttonCreateEvent.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        eventLogic.createOrUpdate(new EventModel());
                     }
                 }
         );
