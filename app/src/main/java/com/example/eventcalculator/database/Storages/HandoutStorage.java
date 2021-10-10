@@ -20,7 +20,7 @@ public class HandoutStorage implements IHandoutStorage {
     final String COLUMN_ID = "handoutid";
     final String COLUMN_NAME = "handout_name";
     final String COLUMN_PRICE = "handout_cost";
-    final String COLUMN_COUNTPERPEOPLE = "count_per_person";
+    final String COLUMN_COUNTPERPERSON = "count_per_person";
     final String COLUMN_EVENTID = "eventid";
 
     public HandoutStorage(Context context) {
@@ -48,7 +48,7 @@ public class HandoutStorage implements IHandoutStorage {
             HandoutModel obj = new HandoutModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.price = cursor.getInt((int) cursor.getColumnIndex(COLUMN_PRICE));
-            obj.countPerPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTPERPEOPLE));
+            obj.countPerPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTPERPERSON));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
@@ -69,7 +69,7 @@ public class HandoutStorage implements IHandoutStorage {
             HandoutModel obj = new HandoutModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.price = cursor.getInt((int) cursor.getColumnIndex(COLUMN_PRICE));
-            obj.countPerPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTPERPEOPLE));
+            obj.countPerPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTPERPERSON));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
@@ -88,7 +88,7 @@ public class HandoutStorage implements IHandoutStorage {
         }
         obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
         obj.price = cursor.getInt((int) cursor.getColumnIndex(COLUMN_PRICE));
-        obj.countPerPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTPERPEOPLE));
+        obj.countPerPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTPERPERSON));
         obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
         obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
         return obj;
@@ -97,7 +97,7 @@ public class HandoutStorage implements IHandoutStorage {
     public void insert(HandoutModel model) {
         ContentValues content = new ContentValues();
         content.put(COLUMN_PRICE,model.price);
-        content.put(COLUMN_COUNTPERPEOPLE,model.countPerPeople);
+        content.put(COLUMN_COUNTPERPERSON,model.countPerPeople);
         content.put(COLUMN_EVENTID,model.eventId);
         content.put(COLUMN_NAME,model.name);
         db.insert(TABLE,null,content);
@@ -106,7 +106,7 @@ public class HandoutStorage implements IHandoutStorage {
     public void update(HandoutModel model) {
         ContentValues content=new ContentValues();
         content.put(COLUMN_PRICE,model.price);
-        content.put(COLUMN_COUNTPERPEOPLE,model.countPerPeople);
+        content.put(COLUMN_COUNTPERPERSON,model.countPerPeople);
         content.put(COLUMN_EVENTID,model.eventId);
         content.put(COLUMN_NAME,model.name);
         String where = COLUMN_ID+" = "+model.id;
