@@ -1,7 +1,9 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IExtraStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
 import com.example.eventcalculator.eventBusinessLogic.models.ExtraModel;
+import com.example.eventcalculator.eventBusinessLogic.models.PersonalModel;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -63,6 +65,17 @@ public class ExtraLogic {
             }
         }
         extraStorage.delete(model);
+    }
+
+    public int countPriceExtra(EventModel model) {
+        List<ExtraModel> extras = Read(null);
+        int price = 0;
+        for(ExtraModel extra : extras) {
+            if(extra.getEventId() == model.getId()) {
+                price += extra.cost * model.getCountOfPeople();
+            }
+        }
+        return price;
     }
 
 }

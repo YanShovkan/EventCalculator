@@ -14,9 +14,7 @@ public class HandoutModel {
         this.eventId = eventId;
     }
 
-    public HandoutModel() {
-
-    }
+    public HandoutModel() { }
 
     public int getEventId() {
         return eventId;

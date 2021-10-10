@@ -1,6 +1,8 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
 import com.example.eventcalculator.eventBusinessLogic.interfaces.IPremiseStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
+import com.example.eventcalculator.eventBusinessLogic.models.PersonalModel;
 import com.example.eventcalculator.eventBusinessLogic.models.PremiseModel;
 
 import java.util.LinkedList;
@@ -8,6 +10,7 @@ import java.util.List;
 
 public class PremiseLogic {
     private IPremiseStorage premiseStorage;
+    private final int MINIMAL_SQUARE_PER_PEOPLE = 7;
 
     public PremiseLogic(IPremiseStorage premiseStorage) {
         this.premiseStorage = premiseStorage;
@@ -62,5 +65,19 @@ public class PremiseLogic {
             }
         }
         premiseStorage.delete(model);
+    }
+
+    public int countSquare(EventModel model) {
+        return model.getCountOfPeople() * MINIMAL_SQUARE_PER_PEOPLE;
+    }
+
+    public int countPremiseCost(EventModel model) {
+        List<PremiseModel> premises = read(null);
+        for(PremiseModel premise : premises) {
+            if(premise.getEventId() == model.getId()) {
+                return premise.cost;
+            }
+        }
+        return 0;
     }
 }
