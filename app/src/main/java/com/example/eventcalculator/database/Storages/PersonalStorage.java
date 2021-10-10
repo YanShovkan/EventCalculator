@@ -1,17 +1,16 @@
 package com.example.eventcalculator.database.Storages;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-
 import com.example.eventcalculator.database.DatabaseHelper;
-import com.example.eventcalculator.database.Models.Personal;
-
+import com.example.eventcalculator.eventBusinessLogic.interfaces.IPersonalStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.PersonalModel;
 import java.util.List;
-import java.util.Vector;
+import java.util.ArrayList;
 
-public class PersonalStorage {
+public class PersonalStorage implements IPersonalStorage {
     DatabaseHelper sqlHelper;
     SQLiteDatabase db;
     final String TABLE = "personal";
@@ -21,20 +20,28 @@ public class PersonalStorage {
     final String COLUMN_PAYMENT = "personal_payment";
     final String COLUMN_EVENTID = "eventid";
 
-    public PersonalStorage(View view) {
-        sqlHelper = new DatabaseHelper(view.getContext());
+    public PersonalStorage(Context context) {
+        sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
     }
 
-    public List<Personal> GetFullList() {
+    public PersonalStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
+    public List<PersonalModel> getFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
-        List<Personal> list;
-        list = new Vector<Personal>();
+        List<PersonalModel> list = new ArrayList<>();
         if (!cursor.moveToFirst()) {
             return list;
         }
         do {
-            Personal obj = new Personal();
+            PersonalModel obj = new PersonalModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.position = cursor.getString((int) cursor.getColumnIndex(COLUMN_POSITION));
             obj.payment = cursor.getInt((int) cursor.getColumnIndex(COLUMN_PAYMENT));
@@ -42,20 +49,20 @@ public class PersonalStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isAfterLast());
         return list;
     }
 
-    public List<Personal> GetFilteredList(Personal model) {
+    public List<PersonalModel> getFilteredList(PersonalModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
-        List<Personal> list;
-        list = new Vector<Personal>();
+        List<PersonalModel> list = new ArrayList<>();
         if (!cursor.moveToFirst()) {
             return list;
         }
         do {
-            Personal obj = new Personal();
+            PersonalModel obj = new PersonalModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.position = cursor.getString((int) cursor.getColumnIndex(COLUMN_POSITION));
             obj.payment = cursor.getInt((int) cursor.getColumnIndex(COLUMN_PAYMENT));
@@ -63,14 +70,15 @@ public class PersonalStorage {
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
 
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isAfterLast());
         return list;
     }
 
-    public Personal GetElement(Personal model) {
+    public PersonalModel getElement(PersonalModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_ID + " = " + model.id, null);
-        Personal obj = new Personal();
+        PersonalModel obj = new PersonalModel();
         if (!cursor.moveToFirst()) {
             return null;
         }
@@ -82,7 +90,7 @@ public class PersonalStorage {
         return obj;
     }
 
-    public void Insert(Personal model) {
+    public void insert(PersonalModel model) {
         ContentValues content = new ContentValues();
         content.put(COLUMN_PAYMENT,model.payment);
         content.put(COLUMN_POSITION,model.position);
@@ -91,7 +99,7 @@ public class PersonalStorage {
         db.insert(TABLE,null,content);
     }
 
-    public void Update(Personal model) {
+    public void update(PersonalModel model) {
         ContentValues content=new ContentValues();
         content.put(COLUMN_PAYMENT,model.payment);
         content.put(COLUMN_POSITION,model.position);
@@ -101,7 +109,7 @@ public class PersonalStorage {
         db.update(TABLE,content,where,null);
     }
 
-    public void Delete(Personal model) {
+    public void delete(PersonalModel model) {
         String where = COLUMN_ID+" = "+model.id;
         db.delete(TABLE,where,null);
     }

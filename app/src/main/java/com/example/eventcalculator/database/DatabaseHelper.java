@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE event (\n" +
+        db.execSQL("CREATE TABLE IF NOT EXISTS event (\n" +
                 "    eventid integer PRIMARY KEY,\n" +
                 "    event_name character(100) NOT NULL,\n" +
                 "    date_from string,\n" +

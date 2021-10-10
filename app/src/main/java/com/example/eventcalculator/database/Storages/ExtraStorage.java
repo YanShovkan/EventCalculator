@@ -1,17 +1,16 @@
 package com.example.eventcalculator.database.Storages;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.View;
-
 import com.example.eventcalculator.database.DatabaseHelper;
-import com.example.eventcalculator.database.Models.Extra;
-
+import com.example.eventcalculator.eventBusinessLogic.interfaces.IExtraStorage;
+import com.example.eventcalculator.eventBusinessLogic.models.ExtraModel;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-public class ExtraStorage {
+public class ExtraStorage implements IExtraStorage {
 
     DatabaseHelper sqlHelper;
     SQLiteDatabase db;
@@ -22,54 +21,63 @@ public class ExtraStorage {
     final String COLUMN_DESCRIPTION = "description";
     final String COLUMN_EVENTID = "eventid";
 
-    public ExtraStorage(View view) {
-        sqlHelper = new DatabaseHelper(view.getContext());
+    public ExtraStorage(Context context) {
+        sqlHelper = new DatabaseHelper(context);
         db = sqlHelper.getWritableDatabase();
     }
 
-    public List<Extra> GetFullList() {
+    public ExtraStorage open(){
+        db = sqlHelper.getWritableDatabase();
+        return this;
+    }
+
+    public void close(){
+        db.close();
+    }
+
+    public List<ExtraModel> getFullList() {
         Cursor cursor = db.rawQuery("select * from " + TABLE, null);
-        List<Extra> list;
-        list = new Vector<Extra>();
+        List<ExtraModel> list = new ArrayList<>();
         if (!cursor.moveToFirst()) {
             return list;
         }
         do {
-            Extra obj = new Extra();
+            ExtraModel obj = new ExtraModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.cost = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COST));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
             obj.description=cursor.getString((int) cursor.getColumnIndex(COLUMN_DESCRIPTION));
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isAfterLast());
         return list;
     }
 
-    public List<Extra> GetFilteredList(Extra model) {
+    public List<ExtraModel> getFilteredList(ExtraModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_EVENTID + " = " + model.eventId, null);
-        List<Extra> list;
-        list = new Vector<Extra>();
+        List<ExtraModel> list = new ArrayList<>();
         if (!cursor.moveToFirst()) {
             return list;
         }
         do {
-            Extra obj = new Extra();
+            ExtraModel obj = new ExtraModel();
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             obj.cost = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COST));
             obj.eventId = cursor.getInt((int) cursor.getColumnIndex(COLUMN_EVENTID));
             obj.name = cursor.getString((int) cursor.getColumnIndex(COLUMN_NAME));
             obj.description=cursor.getString((int) cursor.getColumnIndex(COLUMN_DESCRIPTION));
             list.add(obj);
-        } while (cursor.moveToNext());
+            cursor.moveToNext();
+        } while (!cursor.isAfterLast());
         return list;
     }
 
-    public Extra GetElement(Extra model) {
+    public ExtraModel getElement(ExtraModel model) {
         Cursor cursor = db.rawQuery("select * from " + TABLE + " where "
                 + COLUMN_ID + " = " + model.id, null);
-        Extra obj = new Extra();
+        ExtraModel obj = new ExtraModel();
         if (!cursor.moveToFirst()) {
             return null;
         }
@@ -81,7 +89,7 @@ public class ExtraStorage {
         return obj;
     }
 
-    public void Insert(Extra model) {
+    public void insert(ExtraModel model) {
         ContentValues content = new ContentValues();
         content.put(COLUMN_COST,model.cost);
         content.put(COLUMN_EVENTID,model.eventId);
@@ -90,7 +98,7 @@ public class ExtraStorage {
         db.insert(TABLE,null,content);
     }
 
-    public void Update(Extra model) {
+    public void update(ExtraModel model) {
         ContentValues content=new ContentValues();
         content.put(COLUMN_COST,model.cost);
         content.put(COLUMN_EVENTID,model.eventId);
@@ -100,7 +108,7 @@ public class ExtraStorage {
         db.update(TABLE,content,where,null);
     }
 
-    public void Delete(Extra model) {
+    public void delete(ExtraModel model) {
         String where = COLUMN_ID+" = "+model.id;
         db.delete(TABLE,where,null);
     }
