@@ -17,6 +17,7 @@ import java.util.List;
 
 public class EventLogic extends Application {
     private IEventStorage eventStorage;
+
     ProductStorage productStorage = new ProductStorage(this);
     ProductLogic productLogic = new ProductLogic(productStorage);
 

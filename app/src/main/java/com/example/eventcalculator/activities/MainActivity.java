@@ -19,6 +19,7 @@ import com.example.eventcalculator.database.Storages.ProductStorage;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.EquipmentLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.EventLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.ExtraLogic;
+import com.example.eventcalculator.eventBusinessLogic.businessLogic.HandoutLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.PersonalLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.PremiseLogic;
 import com.example.eventcalculator.eventBusinessLogic.businessLogic.ProductLogic;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         ExtraLogic extraLogic = new ExtraLogic(extraStorage);
 
         HandoutStorage handoutStorage = new HandoutStorage(this);
-     //   HandoutLogic handoutLogic = new HandoutLogic(handoutStorage);
+        HandoutLogic handoutLogic = new HandoutLogic(handoutStorage);
 
         buttonPlanEvent = (Button)findViewById(R.id.buttonPlanEvent);
 

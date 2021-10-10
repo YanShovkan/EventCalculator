@@ -18,8 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS event (\n" +
                 "    eventid integer PRIMARY KEY,\n" +
                 "    event_name character(100) NOT NULL,\n" +
-                "    date_from string,\n" +
-                "\t  date_to string,\n" +
+                "    day_count integer,\n" +
                 "    description character(150),\n" +
                 "\t  count_of_people integer NOT NULL);\n");
 
