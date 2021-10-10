@@ -17,7 +17,7 @@ public class PersonalStorage implements IPersonalStorage {
     final String COLUMN_ID = "personalid";
     final String COLUMN_NAME = "personal_name";
     final String COLUMN_POSITION = "personal_position";
-    final String COLUMN_PAYMENT = "personal_payment";
+    final String COLUMN_PAYMENT = "payment";
     final String COLUMN_EVENTID = "eventid";
 
     public PersonalStorage(Context context) {

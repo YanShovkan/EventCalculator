@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/EventCalculator/app/src/main/res/layout/activity_calculation.xml" value="0.1265625" />
-        <entry key="..\:/EventCalculator/app/src/main/res/layout/activity_event.xml" value="0.1265625" />
-        <entry key="..\:/EventCalculator/app/src/main/res/layout/activity_onepersonal.xml" value="0.2" />
-        <entry key="..\:/EventCalculator/app/src/main/res/layout/activity_personal.xml" value="0.13020833333333334" />
-        <entry key="..\:/EventCalculator/app/src/main/res/layout/activity_premises.xml" value="0.1265625" />
-        <entry key="..\:/EventCalculator/app/src/main/res/layout/activity_products.xml" value="0.1265625" />
         <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_equipments.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_event.xml" value="0.359375" />
         <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_handouts.xml" value="0.20052083333333334" />
@@ -16,6 +10,10 @@
         <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_personal.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_premises.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/ULSTU37/AndroidStudioProjects/EventCalculator/app/src/main/res/layout/activity_products.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activity_add_personal.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_add_product.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_products.xml" value="0.13697916666666668" />
       </map>
     </option>
   </component>

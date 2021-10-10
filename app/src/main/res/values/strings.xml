@@ -12,8 +12,8 @@
     <string name="buttonAdd_text">Добавить</string>
     <string name="buttonDelete_text">Удалить</string>
     <string name="buttonChange_text">Изменить</string>
-    <string name="textView_PersonCount" >Количество человек: </string>
-    <string name="textView_DaysCount" >Количество дней: </string>
-    <string name="textView_Save" >Сохранить </string>
-    <string name="textView_Cancel" >Отменить </string>
+    <string name="textView_PersonCount">Количество человек: </string>
+    <string name="textView_DaysCount">Количество дней: </string>
+    <string name="textView_Save">Сохранить </string>
+    <string name="textView_Cancel">Отменить </string>
 </resources>
