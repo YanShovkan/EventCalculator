@@ -1,6 +1,8 @@
 package com.example.eventcalculator.eventBusinessLogic.businessLogic;
 
 import android.app.Application;
+import android.content.Context;
+import android.media.audiofx.DynamicsProcessing;
 
 import com.example.eventcalculator.database.Storages.EquipmentStorage;
 import com.example.eventcalculator.database.Storages.EventStorage;
@@ -15,24 +17,42 @@ import com.example.eventcalculator.eventBusinessLogic.models.ProductModel;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EventLogic extends Application {
+public class EventLogic {
     private IEventStorage eventStorage;
-    ProductStorage productStorage = new ProductStorage(this);
-    ProductLogic productLogic = new ProductLogic(productStorage);
+    private Context context;
+    ProductStorage productStorage;
+    ProductLogic productLogic;
 
-    PremiseStorage premiseStorage = new PremiseStorage(this);
-    PremiseLogic premiseLogic = new PremiseLogic(premiseStorage);
+    PremiseStorage premiseStorage;
+    PremiseLogic premiseLogic;
 
-    EquipmentStorage equipmentStorage = new EquipmentStorage(this);
-    EquipmentLogic equipmentLogic = new EquipmentLogic(equipmentStorage);
+    EquipmentStorage equipmentStorage;
+    EquipmentLogic equipmentLogic;
 
-    PersonalStorage personalStorage = new PersonalStorage(this);
-    PersonalLogic personalLogic = new PersonalLogic(personalStorage);
+    PersonalStorage personalStorage;
+    PersonalLogic personalLogic;
 
-    ExtraStorage extraStorage = new ExtraStorage(this);
-    ExtraLogic extraLogic = new ExtraLogic(extraStorage);
+    ExtraStorage extraStorage;
+    ExtraLogic extraLogic;
 
     public EventLogic(IEventStorage eventStorage) {
+        this.eventStorage = eventStorage;
+    }
+
+    public EventLogic(Context context, IEventStorage eventStorage) {
+        productStorage = new ProductStorage(context);
+        productLogic = new ProductLogic(productStorage);
+        premiseStorage = new PremiseStorage(context);
+        premiseLogic = new PremiseLogic(premiseStorage);
+
+        equipmentStorage = new EquipmentStorage(context);
+        equipmentLogic = new EquipmentLogic(equipmentStorage);
+
+        personalStorage = new PersonalStorage(context);
+        personalLogic = new PersonalLogic(personalStorage);
+
+        extraStorage = new ExtraStorage(context);
+        extraLogic = new ExtraLogic(extraStorage);
         this.eventStorage = eventStorage;
     }
 

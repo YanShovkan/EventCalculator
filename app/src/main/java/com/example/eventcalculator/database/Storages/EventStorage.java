@@ -49,7 +49,7 @@ public class EventStorage implements IEventStorage {
         do {
             EventModel obj = new EventModel();
 
-            obj.dayCount = cursor.getInt((int) cursor.getColumnIndex(COLUMN_DAYCOUNT));;
+            //obj.dayCount = cursor.getInt((int) cursor.getColumnIndex(COLUMN_DAYCOUNT));
             obj.countOfPeople = cursor.getInt((int) cursor.getColumnIndex(COLUMN_COUNTOFPEOPLE));
             obj.id = cursor.getInt((int) cursor.getColumnIndex(COLUMN_ID));
             list.add(obj);
