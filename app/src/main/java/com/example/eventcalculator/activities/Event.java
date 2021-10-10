@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.eventcalculator.R;
+import com.example.eventcalculator.database.Storages.EventStorage;
+import com.example.eventcalculator.eventBusinessLogic.businessLogic.EventLogic;
+import com.example.eventcalculator.eventBusinessLogic.models.EventModel;
+
+import java.util.List;
 
 public class Event extends AppCompatActivity {
     private Button buttonAddProducts;
@@ -15,19 +20,34 @@ public class Event extends AppCompatActivity {
     private Button buttonAddPersonal;
     private Button buttonAddPremises;
     private Button buttonAddEquipments;
+    private Button buttonCreateEvent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
-
+        EventStorage eventStorage = new EventStorage(this);
+        EventLogic eventLogic = new EventLogic(eventStorage);
+        List<EventModel> eventList = eventLogic.read(null);
         buttonAddProducts = (Button)findViewById(R.id.buttonAddProducts);
+
+
+
+        int eventId = 1;
+
+        if(!eventList.isEmpty()) {
+            eventId = eventList.get(eventList.size() - 1).id + 1;
+        }
+
+        int evendIdToPut = eventId;
 
         buttonAddProducts.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Event.this, Products.class);
+                        intent.putExtra("eventId", evendIdToPut);
                         startActivity(intent);
                     }
                 }
@@ -77,6 +97,17 @@ public class Event extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(Event.this, Equipments.class);
                         startActivity(intent);
+                    }
+                }
+        );
+
+        buttonCreateEvent = (Button)findViewById(R.id.buttonCreateEvent);
+
+        buttonCreateEvent.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        eventLogic.createOrUpdate(new EventModel());
                     }
                 }
         );

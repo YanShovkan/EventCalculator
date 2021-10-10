@@ -1,5 +1,7 @@
 package com.example.eventcalculator.eventBusinessLogic.models;
 
+import java.io.Serializable;
+
 public class ProductModel {
     public int id;
     public String name;
